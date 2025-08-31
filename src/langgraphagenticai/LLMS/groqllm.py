@@ -10,9 +10,9 @@ class GroqLLM:
         try:
             groq_api_key = self.user_controls_input['GROQ_API_KEY']
             selected_groq_model = self.user_controls_input['selected_groq_model']
-            if groq_api_key=='' or os.getenv('GROQ_API_KEY') is None:
+            if groq_api_key=='' or groq_api_key is None:
                 st.error("Please set your Groq API key in the sidebar.")
-                
+                return None
                 
             llm = ChatGroq(model=selected_groq_model, api_key=groq_api_key)
         
